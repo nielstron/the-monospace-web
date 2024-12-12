@@ -4,42 +4,50 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <meta name="author" content="Oskar Wickström" />
+  <meta name="author" content="Niels Mündler, Mark Niklas Müller, Jingxuan He, Martin Vechev" />
   <meta name="dcterms.date" content="2024-08-26" />
-  <title>The Monospace Web</title>
+  <title>SWT-Bench</title>
   <link rel="stylesheet" href="reset.css" />
   <link rel="stylesheet" href="index.css" />
 </head>
 <body>
 <table class="header">
   <tr>
-    <td colspan="2" rowspan="2" class="width-auto">
-      <h1 class="title">The Monospace Web</h1>
-      <span class="subtitle">A minimalist design exploration</span>
+    <td colspan="6" class="width-auto" style="text-align: center;">
+      <h1 class="title">
+        SWT-Bench
+      </h1>
+      <span class="subtitle">Testing and Validating Real-World Bug-Fixes
+with Code Agents</span>
     </td>
-    <th>Version</th>
-    <td class="width-min">v0.1.1</td>
   </tr>
   <tr>
-    <th>Updated</th>
+    <td class="width-auto" colspan="6" style="text-align: center;"><cite>Niels
+Mündler, Mark Niklas Müller, Jingxuan He, Martin Vechev</cite></td>
+  </tr>
+  <tr>
+    <th class="width-min">Version</th>
+    <td class="width-min">v1.0.1</td>
+    <th class="width-min">Updated</th>
     <td class="width-min"><time style="white-space: pre;">2024-08-26</time></td>
-  </tr>
-  <tr>
-    <th class="width-min">Author</th>
-    <td class="width-auto"><a href="https://wickstrom.tech"><cite>Oskar
-Wickström</cite></a></td>
     <th class="width-min">License</th>
-    <td>MIT</td>
+    <td class="width-min" style="text-align: left;">MIT</td>
   </tr>
 </table>
 <label class="debug-toggle-label"><input type="checkbox" class="debug-toggle" /> Debug mode</label>
+<div class="abstract">
+SWT-bench is a benchmark for evaluating large language models on testing
+generation for real world software issues collected from GitHub. Given a
+codebase and an issue, a language model is tasked with generating a
+reproducing test that fails in the original state of the code base and
+passes after a patch resolving the issue has been applied.
+</div>
 <nav id="TOC" role="doc-toc">
 <h2 id="toc-title">Contents</h2>
 <ul class="incremental">
-<li><a href="#introduction" id="toc-introduction">Introduction</a></li>
+<li><a href="#leaderboard" id="toc-leaderboard">Leaderboard</a></li>
 <li><a href="#the-basics" id="toc-the-basics">The Basics</a></li>
 <li><a href="#lists" id="toc-lists">Lists</a></li>
-<li><a href="#tables" id="toc-tables">Tables</a></li>
 <li><a href="#forms" id="toc-forms">Forms</a></li>
 <li><a href="#grids" id="toc-grids">Grids</a></li>
 <li><a href="#ascii-drawings" id="toc-ascii-drawings">ASCII
@@ -48,23 +56,57 @@ Drawings</a></li>
 <li><a href="#discussion" id="toc-discussion">Discussion</a></li>
 </ul>
 </nav>
-<h2 id="introduction">Introduction</h2>
-<p>Monospace fonts are dear to many of us. Some find them more readable,
-consistent, and beautiful, than their proportional alternatives. Maybe
-we’re just brainwashed from spending years in terminals? Or are we
-hopelessly nostalgic? I’m not sure. But I like them, and that’s why I
-started experimenting with all-monospace Web.</p>
-<p>On this page, I use a monospace grid to align text and draw diagrams.
-It’s generated from a simple Markdown document (using Pandoc), and the
-CSS and a tiny bit of Javascript renders it on the grid. The page is
-responsive, shrinking in character-sized steps. Standard elements should
-<em>just work</em>, at least that’s the goal. It’s semantic HTML,
-rendered as if we were back in the 70s.</p>
-<p>All right, but is this even a good idea? It’s a technical and
-creative challenge and I like the aesthetic. If you’d like to use it,
-feel free to fork or copy the bits you need, respecting the license. I
-might update it over time with improvements and support for more
-standard elements.</p>
+<h2 id="leaderboard">Leaderboard</h2>
+<p>We summarize results submitted and evaluated on SWT-bench Lite by
+different approaches here.</p>
+<table id="leaderboard-table">
+<thead>
+<tr>
+<th class="width-auto">
+Name <span class="sort-arrow">
+</th>
+<th class="width-min">
+Success Rate <span class="sort-arrow">
+</th>
+<th class="width-min">
+Coverage Increase <span class="sort-arrow">
+</th>
+<th class="width-min">
+Date <span class="sort-arrow">
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+LIBRO
+</td>
+<td>
+14.1
+</td>
+<td>
+23.8
+</td>
+<td>
+<time>2024-10-01</time>
+</td>
+</tr>
+<tr>
+<td>
+Zero Shot Plus
+</td>
+<td>
+9.4
+</td>
+<td>
+21.5
+</td>
+<td>
+<time>2024-10-01</time>
+</td>
+</tr>
+</tbody>
+</table>
 <h2 id="the-basics">The Basics</h2>
 <p>This document uses a few extra classes here and there, but mostly
 it’s just markup. This, for instance, is a regular paragraph.</p>
@@ -143,48 +185,6 @@ Hidden gems.
 </ul>
 </li>
 </ul>
-<h2 id="tables">Tables</h2>
-<p>We can use regular tables that automatically adjust to the monospace
-grid. They’re responsive.</p>
-<table>
-<thead>
-<tr>
-<th class="width-min">
-Name
-</th>
-<th class="width-auto">
-Dimensions
-</th>
-<th class="width-min">
-Position
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-Boboli Obelisk
-</td>
-<td>
-1.41m × 1.41m × 4.87m
-</td>
-<td>
-43°45’50.78”N 11°15’3.34”E
-</td>
-</tr>
-<tr>
-<td>
-Pyramid of Khafre
-</td>
-<td>
-215.25m × 215.25m × 136.4m
-</td>
-<td>
-29°58’34”N 31°07’51”E
-</td>
-</tr>
-</tbody>
-</table>
 <p>Note that only one column is allowed to grow.</p>
 <h2 id="forms">Forms</h2>
 <p>Here are some buttons:</p>

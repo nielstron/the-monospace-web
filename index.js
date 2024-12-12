@@ -27,6 +27,9 @@ function adjustMediaPadding() {
   }
 
   function onMediaLoaded(media) {
+    if(media.classList.contains("no-padding")) {
+      return;
+    }
     var width, height;
     switch (media.tagName) {
       case "IMG":
@@ -118,3 +121,60 @@ function onDebugToggle() {
 }
 debugToggle.addEventListener("change", onDebugToggle);
 onDebugToggle();
+
+// making specific table sortable
+function makeSortable(table) {
+  const headers = table.querySelectorAll("th");
+
+  tbody = table.querySelector("tbody");
+  function sortByIndex(index) {
+      sortTableByColumn(tbody, index);
+      updateArrows(headers, index);
+      console.log("Table sorted by column " + index);
+ };
+  headers.forEach((header, index) => {
+    header.addEventListener("click", () => sortByIndex(index));
+  });
+
+  function sortTableByColumn(table, columnIndex) {
+    const rows = Array.from(table.querySelectorAll("tr"));
+    console.log(table);
+    console.log(rows);
+    const isAscending = table.getAttribute("data-sort-asc") === "true";
+    const direction = isAscending ? 1 : -1;
+
+    rows.sort((rowA, rowB) => {
+      const cellA = rowA.children[columnIndex].textContent.trim();
+      const cellB = rowB.children[columnIndex].textContent.trim();
+
+      const cellANum = parseFloat(cellA);
+      const cellBNum = parseFloat(cellB);
+
+      if (!isNaN(cellANum) && !isNaN(cellBNum)) {
+        return direction * (cellANum - cellBNum);
+      } else {
+        return direction * cellA.localeCompare(cellB);
+      }
+    });
+
+    rows.forEach(row => table.appendChild(row));
+    table.setAttribute("data-sort-asc", !isAscending);
+  }
+
+  function updateArrows(headers, sortedColumnIndex) {
+    headers.forEach((header, index) => {
+      const arrow = header.querySelector(".sort-arrow");
+      if (!arrow) {
+        return;
+      }
+      if (index === sortedColumnIndex) {
+        const isAscending = tbody.getAttribute("data-sort-asc") === "true";
+        arrow.textContent = isAscending ? " ▲" : " ▼";
+      } else {
+        arrow.textContent = "";
+      }
+    });
+  }
+  sortByIndex(1);
+}
+makeSortable(document.getElementById("leaderboard-table"));

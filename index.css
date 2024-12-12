@@ -194,6 +194,18 @@ img {
   font-style: italic;
   color: var(--text-color-alt);
 }
+/* .header img {
+  float: left;
+  width: 100px;
+  height: 100px;
+  background: #555;
+}
+
+.header h1 {
+  position: relative;
+  top: 18px;
+  left: 10px;
+} */
 
 details {
   border: var(--border-thickness) solid var(--text-color);

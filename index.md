@@ -1,33 +1,43 @@
 ---
-title: The Monospace Web
-subtitle: A minimalist design exploration
-author: Oskar Wickström
-author-url: "https://wickstrom.tech"
+title: SWT-Bench
+subtitle: Testing and Validating Real-World Bug-Fixes with Code Agents
+author: Niels Mündler, Mark Niklas Müller, Jingxuan He, Martin Vechev
+author-url: "https://github.com/logic-star-ai/swt-bench/tree/master"
 date: 2024-08-26
 lang: en
 toc-title: Contents
-version: v0.1.1
+version: v1.0.1
+abstract: SWT-bench is a benchmark for evaluating large language models on testing generation for real world software issues collected from GitHub. Given a codebase and an issue, a language model is tasked with generating a reproducing test that fails in the original state of the code base and passes after a patch resolving the issue has been applied.
 ---
 
-## Introduction
+## Leaderboard
 
-Monospace fonts are dear to many of us. 
-Some find them more readable, consistent, and beautiful, than their proportional alternatives.
-Maybe we're just brainwashed from spending years in terminals?
-Or are we hopelessly nostalgic?
-I'm not sure.
-But I like them, and that's why I started experimenting with all-monospace Web.
+We summarize results submitted and evaluated on SWT-bench Lite by different approaches here.
 
-On this page, I use a monospace grid to align text and draw diagrams.
-It's generated from a simple Markdown document (using Pandoc), and the CSS and a tiny bit of Javascript renders it on the grid.
-The page is responsive, shrinking in character-sized steps.
-Standard elements should _just work_, at least that's the goal.
-It's semantic HTML, rendered as if we were back in the 70s.
-
-All right, but is this even a good idea?
-It's a technical and creative challenge and I like the aestethic.
-If you'd like to use it, feel free to fork or copy the bits you need, respecting the license.
-I might update it over time with improvements and support for more standard elements.
+<table id="leaderboard-table">
+<thead>
+  <tr>
+    <th class="width-auto">Name <span class="sort-arrow"></th>
+    <th class="width-min">Success Rate <span class="sort-arrow"></th>
+    <th class="width-min">Coverage Increase <span class="sort-arrow"></th>
+    <th class="width-min">Date <span class="sort-arrow"></th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>LIBRO</td>
+    <td>14.1</td>
+    <td>23.8</td>
+    <td><time>2024-10-01</time></td>
+  </tr>
+  <tr>
+    <td>Zero Shot Plus</td>
+    <td>9.4</td>
+    <td>21.5</td>
+    <td><time>2024-10-01</time></td>
+  </tr>
+</tbody>
+</table>
 
 ## The Basics
 
@@ -88,32 +98,6 @@ This is a regular unordered list with a `tree` class:
 
 </li></ul>
 
-## Tables
-
-We can use regular tables that automatically adjust to the monospace grid.
-They're responsive. 
-
-<table>
-<thead>
-  <tr>
-    <th class="width-min">Name</th>
-    <th class="width-auto">Dimensions</th>
-    <th class="width-min">Position</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td>Boboli Obelisk</td>
-    <td>1.41m &times; 1.41m &times; 4.87m</td>
-    <td>43°45'50.78"N 11°15'3.34"E</td>
-  </tr>
-  <tr>
-    <td>Pyramid of Khafre</td>
-    <td>215.25m &times; 215.25m &times; 136.4m</td>
-    <td>29°58'34"N 31°07'51"E</td>
-  </tr>
-</tbody>
-</table>
 
 Note that only one column is allowed to grow.
 
